@@ -6,6 +6,7 @@ name: Meerk40t (Windows)
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   build-windows:
