@@ -63,5 +63,6 @@ jobs:
       uses: softprops/action-gh-release@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        tag_name: 0.8.0021
         files: |
           dist/MeerK40t.exe
