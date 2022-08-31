@@ -198,7 +198,7 @@ class LayerSettingPanel(wx.Panel):
 
         self.SetSizer(layer_sizer)
 
-        self.Layout()
+        # self.Layout()
 
         self.Bind(wx.EVT_BUTTON, self.on_button_layer, self.button_layer_color)
         # self.Bind(wx.EVT_COMBOBOX, self.on_combo_operation, self.combo_type)
@@ -270,7 +270,7 @@ class LayerSettingPanel(wx.Panel):
                 self.checkbox_stop.SetValue(self.operation.stopop)
         except AttributeError:
             pass
-        self.Layout()
+        # self.Layout()
         self.Show()
 
     def on_button_layer(self, event=None):  # wxGlade: OperationProperty.<event_handler>
@@ -452,7 +452,7 @@ class SpeedPpiPanel(wx.Panel):
 
         self.SetSizer(speed_power_sizer)
 
-        self.Layout()
+        # self.Layout()
 
         self.text_speed.Bind(wx.EVT_KILL_FOCUS, self.on_text_speed)
         self.text_speed.Bind(wx.EVT_TEXT_ENTER, self.on_text_speed)
@@ -569,7 +569,7 @@ class PassesPanel(wx.Panel):
 
         self.SetSizer(sizer_passes)
 
-        self.Layout()
+        # self.Layout()
 
         self.Bind(wx.EVT_CHECKBOX, self.on_check_passes, self.check_passes)
 
@@ -677,7 +677,7 @@ class InfoPanel(wx.Panel):
 
         self.SetSizer(sizer_info)
 
-        self.Layout()
+        # self.Layout()
 
         # end wxGlade
 
@@ -784,7 +784,7 @@ class PanelStartPreference(wx.Panel):
 
         self.SetSizer(sizer_2)
 
-        self.Layout()
+        # self.Layout()
 
         self.Bind(wx.EVT_SLIDER, self.on_slider_top, self.slider_top)
         self.Bind(wx.EVT_SLIDER, self.on_slider_left, self.slider_left)
@@ -877,7 +877,7 @@ class PanelStartPreference(wx.Panel):
         self._Buffer = wx.Bitmap(width, height)
 
     def on_size(self, event=None):
-        self.Layout()
+        # self.Layout()
         self.set_buffer()
         self.refresh_display()
 
@@ -1171,7 +1171,7 @@ class RasterSettingsPanel(wx.Panel):
 
         self.SetSizer(raster_sizer)
 
-        self.Layout()
+        # self.Layout()
 
         self.text_dpi.Bind(wx.EVT_KILL_FOCUS, self.on_text_dpi)
         self.text_dpi.Bind(wx.EVT_TEXT_ENTER, self.on_text_dpi)
@@ -1335,7 +1335,7 @@ class HatchSettingsPanel(wx.Panel):
 
         self.SetSizer(raster_sizer)
 
-        self.Layout()
+        # self.Layout()
 
         self.text_distance.Bind(wx.EVT_TEXT_ENTER, self.on_text_distance)
         self.text_distance.Bind(wx.EVT_KILL_FOCUS, self.on_text_distance)
@@ -1451,7 +1451,7 @@ class HatchSettingsPanel(wx.Panel):
         self._Buffer = wx.Bitmap(width, height)
 
     def on_size(self, event=None):
-        self.Layout()
+        # self.Layout()
         self.set_buffer()
         self.hatch_lines = None
         self.travel_lines = None
@@ -1605,7 +1605,7 @@ class DwellSettingsPanel(wx.Panel):
 
         self.SetSizer(sizer_passes)
 
-        self.Layout()
+        # self.Layout()
 
         self.text_dwelltime.Bind(wx.EVT_TEXT_ENTER, self.on_text_dwelltime)
         self.text_dwelltime.Bind(wx.EVT_KILL_FOCUS, self.on_text_dwelltime)
@@ -1690,7 +1690,7 @@ class ParameterPanel(ScrolledPanel):
 
         self.SetSizer(param_sizer)
 
-        self.Layout()
+        # self.Layout()
         # end wxGlade
 
     @signal_listener("element_property_reload")
@@ -1722,7 +1722,7 @@ class ParameterPanel(ScrolledPanel):
         #     if not self.dwell_panel.Shown:
         #         self.dwell_panel.Show()
         self.set_widgets(self.operation)
-        self.Layout()
+        # self.Layout()
 
     def set_widgets(self, node):
         self.operation = node
