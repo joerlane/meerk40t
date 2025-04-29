@@ -126,6 +126,32 @@ def plugin(kernel, lifecycle):
                 ],
             },
         )
+        kernel.register(
+            "dev_info/balor-DLC2",
+            {
+                "provider": "provider/device/balor",
+                "friendly_name": _("DLC2 (JCZ-Controller)"),
+                "extended_info": _(
+                    "The JCZ Controller is a type of Galvo Laser Controller for several different sources compatible with the EZCad3™ software."
+                )
+                + "\n"
+                + _(
+                    "With specific settings for the DLC2 Controller."
+                ),
+                "priority": 5,
+                "family": _("Generic DLC2-Laser"),
+                "choices": [
+                    {
+                        "attr": "label",
+                        "default": "Galvo-DLC2",
+                    },
+                    {
+                        "attr": "source",
+                        "default": "dlc2",
+                    },
+                ],
+            },
+        )
 
     elif lifecycle == "preboot":
         prefix = "balor"
