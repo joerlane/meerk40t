@@ -121,7 +121,9 @@ jobs:
 
         mv meerk40t.py mk40t.py
         # --target-architecture universal2   - does not work!
-        pyinstaller --log-level=DEBUG \
+        pyinstaller \
+          --osx-entitlements-file .github/workflows/mac/entitlements.plist \
+          --log-level=DEBUG \
           --hidden-import wx._adv \
           --hidden-import wx._xml \
           --hidden-import meerk40t \
