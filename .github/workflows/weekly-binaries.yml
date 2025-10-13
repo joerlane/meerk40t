@@ -86,7 +86,7 @@ jobs:
 
     - name: Install PyInstaller
       run: |
-        pip install pyinstaller
+        pip install pyinstaller==5.13.2
 
     - name: Generate icons
       run: |
@@ -106,7 +106,7 @@ jobs:
 
         mv meerk40t.py mk40t.py
         # --target-architecture universal2   - does not work!
-        pyinstaller \
+        pyinstaller --log-level=DEBUG \
           --hidden-import wx._adv \
           --hidden-import wx._xml \
           --hidden-import meerk40t \
