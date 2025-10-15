@@ -119,7 +119,7 @@ jobs:
 
         mv meerk40t.py mk40t.py
         # --target-architecture universal2   - does not work!
-        /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m pyinstaller \
+        /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m PyInstaller \
           --osx-entitlements-file .github/workflows/mac/entitlements.plist \
           --log-level=DEBUG \
           --hidden-import wx._adv \
