@@ -97,9 +97,9 @@ jobs:
       run: |
         /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m pip install --quiet pyinstaller==5.13.2
         #which pyinstaller
-        which PyInstaller
-        /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m pyinstaller -v
-        /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m PyInstaller -v
+        #which PyInstaller
+        #/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m pyinstaller -v
+        #/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m PyInstaller -v
 
     - name: Generate icons
       run: |
