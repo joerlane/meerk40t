@@ -74,7 +74,8 @@ jobs:
         /usr/bin/python3 -V
         which python3
         file $(which python3)
-        /usr/bin/python3 -m pip list
+        /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -V
+        /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m pip list
         xcodebuild -version
         xcodebuild -showsdks
         #system_profiler
@@ -84,9 +85,6 @@ jobs:
 
     - name: Install dependencies
       run: |
-        /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -V
-        which python3.9
-        file $(which python3.9)
         /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m pip list
         /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m pip install "opencv-python-headless<=4.8.1.78"
         /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python -m pip install -r requirements.txt
