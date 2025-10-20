@@ -148,11 +148,29 @@ jobs:
         echo "Setting app version to: $MKVERSION"
 
         # Set version information in the app bundle
-        #plutil -replace CFBundleName -string "$APPNAME" dist/MeerK40t.app/Contents/Info.plist
+        plutil -replace CFBundleName -string "$APPNAME" dist/MeerK40t.app/Contents/Info.plist
         #plutil -replace CFBundleShortVersionString -string "$MKVERSION" dist/MeerK40t.app/Contents/Info.plist
         #plutil -replace CFBundleVersion -string "$MKVERSION" dist/MeerK40t.app/Contents/Info.plist
         #plutil -replace CFBundleIdentifier -string "org.tatarize.MeerK40t" dist/MeerK40t.app/Contents/Info.plist
-        #Can't do that unless you re-sign the app
+        #This one in particular was a problem, Changing the case of MeerK40t created a new Preferences/settings since it didn't match meerk40t
+        
+        plutil -insert NSRequiresAquaSystemAppearance -bool NO dist/meerk40t.app/Contents/Info.plist
+        plutil -insert CFBundleDevelopmentRegion -string en dist/meerk40t.app/Contents/Info.plist
+        plutil -insert CFAppleHelpAnchor -string YES dist/meerk40t.app/Contents/Info.plist
+        plutil -replace CFBundleIdentifier -string org.tatarize.meerk40t dist/meerk40t.app/Contents/Info.plist
+        plutil -replace CFBundleShortVersionString -string $MKVERSION dist/meerk40t.app/Contents/Info.plist
+        plutil -insert CFBundleSupportedPlatforms -string MacOSX dist/meerk40t.app/Contents/Info.plist
+        #plutil -insert CFBundleTypeExtensions -string "*" dist/meerk40t.app/Contents/Info.plist
+        plutil -insert CFBundleTypeRole -string Editor dist/meerk40t.app/Contents/Info.plist
+        plutil -insert CFBundleVersion -string $MKVERSION dist/meerk40t.app/Contents/Info.plist
+        plutil -insert LSApplicationCategoryType -string public.app-category.utilities dist/meerk40t.app/Contents/Info.plist
+        #plutil -insert LSFileQuarantineEnabled -string YES dist/meerk40t.app/Contents/Info.plist
+        #plutil -insert NSAppleScriptEnabled -bool NO dist/meerk40t.app/Contents/Info.plist
+        plutil -insert NSHumanReadableCopyright -string "Copyright © 2019-2025 MeerK40t Developers, MIT License" dist/meerk40t.app/Contents/Info.plist
+        plutil -insert NSCameraUsageDescription -string "Camera access for K40 mounted bed positioning alignment camera." dist/meerk40t.app/Contents/Info.plist
+        plutil -replace CFBundleSupportedPlatforms -xml "<array><string>MacOSX</string></array>" dist/MeerK40t.app/Contents/Info.plist
+
+        #Need to re-sign the app after all this
         
         cd dist
         mv MeerK40t.app "MeerK40t-macos-${{ github.run_number }}.app"
