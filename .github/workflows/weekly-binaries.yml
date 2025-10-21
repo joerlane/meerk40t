@@ -147,6 +147,8 @@ jobs:
         echo "Setting app name to: $APPNAME"
         echo "Setting app version to: $MKVERSION"
 
+        codesign -dv dist/MeerK40t.app
+        
         # Set version information in the app bundle
         plutil -replace CFBundleName -string "$APPNAME" dist/MeerK40t.app/Contents/Info.plist
         #plutil -replace CFBundleShortVersionString -string "$MKVERSION" dist/MeerK40t.app/Contents/Info.plist
@@ -159,10 +161,12 @@ jobs:
         plutil -insert CFAppleHelpAnchor -string YES dist/meerk40t.app/Contents/Info.plist
         plutil -replace CFBundleIdentifier -string org.tatarize.meerk40t dist/meerk40t.app/Contents/Info.plist
         plutil -replace CFBundleShortVersionString -string $MKVERSION dist/meerk40t.app/Contents/Info.plist
+        plutil -replace CFBundleShortVersionString -string 0.0.0 dist/meerk40t.app/Contents/Info.plist
         plutil -insert CFBundleSupportedPlatforms -string MacOSX dist/meerk40t.app/Contents/Info.plist
         #plutil -insert CFBundleTypeExtensions -string "*" dist/meerk40t.app/Contents/Info.plist
         plutil -insert CFBundleTypeRole -string Editor dist/meerk40t.app/Contents/Info.plist
-        plutil -insert CFBundleVersion -string $MKVERSION dist/meerk40t.app/Contents/Info.plist
+        #plutil -insert CFBundleVersion -string $MKVERSION dist/meerk40t.app/Contents/Info.plist
+        plutil -insert CFBundleVersion -string 0.0.0 dist/meerk40t.app/Contents/Info.plist
         plutil -insert LSApplicationCategoryType -string public.app-category.utilities dist/meerk40t.app/Contents/Info.plist
         #plutil -insert LSFileQuarantineEnabled -string YES dist/meerk40t.app/Contents/Info.plist
         #plutil -insert NSAppleScriptEnabled -bool NO dist/meerk40t.app/Contents/Info.plist
@@ -170,7 +174,9 @@ jobs:
         plutil -insert NSCameraUsageDescription -string "Camera access for K40 mounted bed positioning alignment camera." dist/meerk40t.app/Contents/Info.plist
         plutil -replace CFBundleSupportedPlatforms -xml "<array><string>MacOSX</string></array>" dist/MeerK40t.app/Contents/Info.plist
 
-        #Need to re-sign the app after all this
+        #Need to re-sign the app after touching things
+
+        codesign -dv dist/MeerK40t.app
         
         cd dist
         mv MeerK40t.app "MeerK40t-macos-${{ github.run_number }}.app"
